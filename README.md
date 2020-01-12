@@ -1,6 +1,6 @@
 # Earthquakes
 
-By givin the position of city you can get 10 closest earthquakes to it (printed in ascending order).
+By givin position of the city (latitude and longitude) you can get 10 closest earthquakes to it (printed in ascending order).
 
 # Requirements
 
