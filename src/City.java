@@ -2,24 +2,21 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+class City extends Position {
 
-class City {
     final String URL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson";
-    float lat;
-    float lon;
+    ArrayList<Earthquake> listOfEarthquakes = new ArrayList<>();
 
     public City(float lat, float lon) {
-        this.lat = lat;
-        this.lon = lon;
+        super(lat, lon);
     }
 
-    void getTenClosestEarthquakes() throws IOException, JSONException {
-        ArrayList<Earthquake> listOfEarthquakes = new ArrayList<>();
+    ArrayList<Earthquake> getTenClosestEarthquakes() throws IOException, JSONException {
         float dist;
 
         java.net.URL oracle = new URL(URL);
@@ -43,6 +40,12 @@ class City {
         }
 
         in.close();
+
+        return listOfEarthquakes;
+    }
+
+    void printListOfClosestEarthquakes() throws IOException, JSONException {
+        listOfEarthquakes = getTenClosestEarthquakes();
 
         for (Earthquake earthquake : listOfEarthquakes)
             System.out.println(earthquake.name + " || " + earthquake.dist);

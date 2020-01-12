@@ -13,6 +13,6 @@ public class Main {
 
         City city = new City(lat, lon);
 
-        city.getTenClosestEarthquakes();
+        city.printListOfClosestEarthquakes();
     }
 }
