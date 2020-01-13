@@ -6,6 +6,7 @@ import java.util.ArrayList;
 abstract class Position {
     float lat;
     float lon;
+    ArrayList<Earthquake> listOfEarthquakes = new ArrayList<>();
 
     public Position(float lat, float lon) {
         this.lat = lat;
@@ -14,5 +15,10 @@ abstract class Position {
 
     abstract ArrayList<Earthquake> getTenClosestEarthquakes() throws IOException, JSONException;
 
-    abstract void printListOfClosestEarthquakes() throws IOException, JSONException;
+    void printListOfClosestEarthquakes() throws IOException, JSONException {
+        listOfEarthquakes = getTenClosestEarthquakes();
+
+        for (Earthquake earthquake : listOfEarthquakes)
+            System.out.println(earthquake.name + " || " + earthquake.dist);
+    }
 }

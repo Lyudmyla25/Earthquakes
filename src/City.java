@@ -43,12 +43,5 @@ class City extends Position {
 
         return listOfEarthquakes;
     }
-
-    void printListOfClosestEarthquakes() throws IOException, JSONException {
-        listOfEarthquakes = getTenClosestEarthquakes();
-
-        for (Earthquake earthquake : listOfEarthquakes)
-            System.out.println(earthquake.name + " || " + earthquake.dist);
-    }
 }
 
